@@ -2,17 +2,43 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainScreenController">
+<AnchorPane prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainScreenController">
    <children>
       
-      <Button fx:id="exitButton" layoutX="239.0" layoutY="704.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="45.0" prefWidth="123.0" text="Exit" />
-      <Label layoutX="246.0" layoutY="41.0" prefHeight="51.0" prefWidth="108.0" text="KOLOR SWEECH" />
-      <Button fx:id="aboutButton" layoutX="239.0" layoutY="614.0" mnemonicParsing="false" onAction="#showAbout" prefHeight="45.0" prefWidth="123.0" text="About" />
-      <Button fx:id="instructionsButton" layoutX="239.0" layoutY="527.0" mnemonicParsing="false" onAction="#showInstructions" prefHeight="45.0" prefWidth="123.0" text="Instructions" />
-      <Button fx:id="loadGameButton" layoutX="239.0" layoutY="437.0" mnemonicParsing="false" onAction="#loadGame" prefHeight="45.0" prefWidth="123.0" text="Load Game" />
-      <Button fx:id="playGameButton" layoutX="239.0" layoutY="347.0" mnemonicParsing="false" onAction="#playGame" prefHeight="45.0" prefWidth="123.0" text="Play New Game" />
+      <Button fx:id="exitButton" layoutX="231.0" layoutY="692.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="48.0" prefWidth="157.0" text="Exit">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font></Button>
+      <Label graphicTextGap="10.0" layoutX="189.0" layoutY="46.0" prefHeight="76.0" prefWidth="240.0" text="KOLOR SWEECH" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="30.0" />
+         </font></Label>
+      <Button fx:id="aboutButton" layoutX="231.0" layoutY="619.0" mnemonicParsing="false" onAction="#showAbout" prefHeight="31.0" prefWidth="157.0" text="About">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font></Button>
+      <Button fx:id="instructionsButton" layoutX="234.0" layoutY="548.0" mnemonicParsing="false" onAction="#showInstructions" prefHeight="48.0" prefWidth="157.0" text="Instructions">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font></Button>
+      <Button fx:id="loadGameButton" layoutX="231.0" layoutY="474.0" mnemonicParsing="false" onAction="#loadGame" prefHeight="48.0" prefWidth="157.0" text="Load Game">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font></Button>
+      <Button fx:id="playGameButton" layoutX="231.0" layoutY="400.0" mnemonicParsing="false" onAction="#playGame" prefHeight="54.0" prefWidth="157.0" text="Play New Game">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Button>
+      <ImageView fitHeight="253.0" fitWidth="287.0" layoutX="183.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/colour-switch-icon.png" />
+         </image>
+      </ImageView>
       
    </children>
 </AnchorPane>

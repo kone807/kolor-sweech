@@ -37,8 +37,6 @@ public class MainScreenController {
     	
     	window.setScene(ts);
     	window.show();
-       System.out.println("I was clicked");
-      // button.setText("name change!!");
     } 
     
     public void loadGame(ActionEvent event) throws IOException
@@ -51,8 +49,6 @@ public class MainScreenController {
     	
     	window.setScene(ts);
     	window.show();
-       System.out.println("I was clicked");
-       //button.setText("name change!!");
     } 
     
     public void showInstructions(ActionEvent event) throws IOException
@@ -65,8 +61,6 @@ public class MainScreenController {
     	
     	window.setScene(ts);
     	window.show();
-       System.out.println("I was clicked");
-      // button.setText("name change!!");
     } 
     
     public void showAbout(ActionEvent event) throws IOException
@@ -79,22 +73,11 @@ public class MainScreenController {
     	
     	window.setScene(ts);
     	window.show();
-       System.out.println("I was clicked");
-      // button.setText("name change!!");
     } 
     
     public void exitGame(ActionEvent event) throws IOException
     {
     	System.exit(0);
-//    	Parent t = FXMLLoader.load(getClass().getResource("PlayNewGame.fxml"));
-//    	Scene ts = new Scene(t);
-//    	
-//    	//stage info
-//    	Stage window = (Stage)(((Node) event.getSource()).getScene().getWindow());
-//    	
-//    	window.setScene(ts);
-//    	window.show();
-//       System.out.println("I was clicked");
-       //button.setText("name change!!");
+
     } 
 }
