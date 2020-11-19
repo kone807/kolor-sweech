@@ -16,7 +16,7 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InstructionsController">
    <children>
-      <Label layoutX="219.0" layoutY="50.0" prefHeight="50.0" prefWidth="163.0" text="INSTRUCTIONS">
+      <Label layoutX="219.0" layoutY="37.0" prefHeight="50.0" prefWidth="163.0" text="INSTRUCTIONS">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
@@ -28,7 +28,7 @@
                </stops>
             </RadialGradient>
          </textFill></Label>
-      <Button fx:id="backButton" layoutX="244.0" layoutY="421.0" mnemonicParsing="false" onAction="#goBack" prefHeight="50.0" prefWidth="114.0" text="BACK" AnchorPane.topAnchor="421.0">
+      <Button fx:id="backButton" layoutX="243.0" layoutY="459.0" mnemonicParsing="false" onAction="#goBack" prefHeight="50.0" prefWidth="114.0" text="BACK" AnchorPane.topAnchor="459.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -50,7 +50,7 @@
                </stops>
             </RadialGradient>
          </textFill></Button>
-      <TextArea editable="false" layoutX="97.0" layoutY="120.0" prefHeight="275.0" prefWidth="407.0" style="-fx-background-color: black; -fx-background-color: black;" text="You got a ball, it's a multi-color ball, you got to make it rise up, dodge those  colourful obstacle kind of thingies. Oh and don't forget to collect those shiny twinkle twinkle little stars. I wonder how they are .....&#10;&#10;&quot;This is way cooler than my days in outer space&quot;&#10;&#10;~ Spaceman Solor Kweech&#10;&#10;" wrapText="true">
+      <TextArea editable="false" layoutX="97.0" layoutY="82.0" prefHeight="355.0" prefWidth="407.0" style="-fx-background-color: black; -fx-background-color: black;" text="&#10;You got a ball, it's a multi-color ball, you got to make it rise up, don't play ring-a-ring-a roses with it, making it fall down. dodge those colourful obstacle kind of things. Oh and don't forget to collect those shiny twinkle twinkle little stars. I wonder how they are .....&#10;&#10;&quot;This is way cooler than my days in outer space&quot;&#10;&#10;~ Spaceman Solor Kweech&#10;&#10;" wrapText="true">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
@@ -58,7 +58,7 @@
             <SepiaTone />
          </effect>
       </TextArea>
-      <ImageView fitHeight="265.0" fitWidth="317.0" layoutX="169.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="265.0" fitWidth="317.0" layoutX="169.0" layoutY="521.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/astronaut.jpg" />
          </image>

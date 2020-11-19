@@ -4,12 +4,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Ellipse?>
 
-
-<AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="application.AboutController">
+<AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AboutController">
    <children>
       <Label layoutX="275.0" layoutY="57.0" prefHeight="27.0" prefWidth="51.0" text="ABOUT" />
       <TextArea layoutX="175.0" layoutY="167.0" prefHeight="200.0" prefWidth="200.0" />
       <Button fx:id="backButton" layoutX="270.0" layoutY="420.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
+      <Ellipse fill="DODGERBLUE" layoutX="201.0" layoutY="615.0" radiusX="100.0" radiusY="80.0" stroke="BLACK" strokeType="INSIDE" style="-fx-translate-y: 100;" />
    </children>
 </AnchorPane>

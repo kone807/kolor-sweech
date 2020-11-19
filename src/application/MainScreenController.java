@@ -5,17 +5,21 @@ package application;
 
 import java.io.IOException;
 
-
+import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Arc;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 
 public class MainScreenController {
@@ -27,6 +31,17 @@ public class MainScreenController {
 	@FXML public Button aboutButton;
 	@FXML public Button exitButton;
 	
+	@FXML public AnchorPane form;
+	@FXML public Arc yellow;
+	@FXML public Arc pink;
+	@FXML public Arc purple;
+	@FXML public Arc blue;
+	@FXML public Group gp;
+	
+	public void here()
+	{
+		setRotate(gp, 360, 1);
+	}
     public void playGame(ActionEvent event) throws IOException
     {
     	Parent t = FXMLLoader.load(getClass().getResource("PlayNewGame.fxml"));
@@ -80,4 +95,15 @@ public class MainScreenController {
     	System.exit(0);
 
     } 
+    
+    public void setRotate(Group a, int angle, int duration)
+    {
+    	RotateTransition rt = new RotateTransition(Duration.seconds(100), a);
+    	rt.setFromAngle(0);
+    	rt.setToAngle(360*100);
+    	rt.setCycleCount(3);
+    	//rt.setRate(20);
+    	//rt.setCycleCount((int)Double.POSITIVE_INFINITY);
+    	rt.play();
+    	}
 }

@@ -6,6 +6,12 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXMLLoader;
 
+// color codes
+// green - #272727
+// yellow - #FAE100
+// violet - #900DFF
+// pink - #FF0181
+// Turquoise - #32DBF0
 
 public class Main extends Application {
 	@Override
