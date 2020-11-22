@@ -38,10 +38,22 @@ public class MainScreenController {
 	@FXML public Arc blue;
 	@FXML public Group gp;
 	
-	public void here()
+	public void rotateRing()
 	{
 		setRotate(gp, 360, 1);
 	}
+	
+	 public void setRotate(Group a, int angle, int duration)
+	    {
+	    	RotateTransition rt = new RotateTransition(Duration.seconds(50), a);
+	    	rt.setFromAngle(0);
+	    	rt.setToAngle(720*30);
+	    	rt.setCycleCount(3);
+	    	//rt.setRate(20);
+	    	//rt.setCycleCount((int)Double.POSITIVE_INFINITY);
+	    	rt.play();
+	    	}
+	 
     public void playGame(ActionEvent event) throws IOException
     {
     	Parent t = FXMLLoader.load(getClass().getResource("PlayNewGame.fxml"));
@@ -95,15 +107,4 @@ public class MainScreenController {
     	System.exit(0);
 
     } 
-    
-    public void setRotate(Group a, int angle, int duration)
-    {
-    	RotateTransition rt = new RotateTransition(Duration.seconds(100), a);
-    	rt.setFromAngle(0);
-    	rt.setToAngle(360*100);
-    	rt.setCycleCount(3);
-    	//rt.setRate(20);
-    	//rt.setCycleCount((int)Double.POSITIVE_INFINITY);
-    	rt.play();
-    	}
 }
