@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 public class AboutController {
 	
 	
-	@FXML public Button backButton;
+@FXML public Button backButton;
 	
     public void goBack(ActionEvent event) throws IOException
     {
@@ -33,5 +33,5 @@ public class AboutController {
     	
     	window.setScene(ts);
     	window.show();
-    } 
+    }
 }
