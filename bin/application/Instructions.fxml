@@ -1,8 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.SepiaTone?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<AnchorPane prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InstructionsController">
+   <children>
+      <Label layoutX="219.0" layoutY="37.0" prefHeight="50.0" prefWidth="163.0" text="INSTRUCTIONS">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop color="#fcf15e" />
+                  <Stop color="#dac227" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill></Label>
+      <Button fx:id="backButton" layoutX="243.0" layoutY="459.0" mnemonicParsing="false" onAction="#goBack" prefHeight="50.0" prefWidth="114.0" text="BACK" AnchorPane.topAnchor="459.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant color="#ffd23c" />
+               </light>
+            </Lighting>
+         </effect>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop color="#b06b6b" />
+                  <Stop color="#f81212" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill></Button>
+      <TextArea editable="false" layoutX="97.0" layoutY="82.0" prefHeight="355.0" prefWidth="407.0" style="-fx-background-color: black; -fx-background-color: black;" text="&#10;You got a ball, it's a multi-color ball, you got to make it rise up, don't play ring-a-ring-a roses with it, making it fall down. dodge those colourful obstacle kind of things. Oh and don't forget to collect those shiny twinkle twinkle little stars. I wonder how they are .....&#10;&#10;&quot;This is way cooler than my days in outer space&quot;&#10;&#10;~ Spaceman Solor Kweech&#10;&#10;" wrapText="true">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+         <effect>
+            <SepiaTone />
+         </effect>
+      </TextArea>
+      <ImageView fitHeight="265.0" fitWidth="317.0" layoutX="169.0" layoutY="521.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/astronaut.jpg" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>
-
