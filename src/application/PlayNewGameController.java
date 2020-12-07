@@ -4,6 +4,7 @@ package application;
 
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
@@ -41,7 +42,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
-public class PlayNewGameController {
+public class PlayNewGameController implements Serializable{
 	
 	
 	@FXML public Button backButton;
@@ -73,6 +74,8 @@ public class PlayNewGameController {
 	@FXML public Rectangle colorChanger;
 	
 	@FXML public Circle ball;
+	
+	@FXML public Button scoreButton;
 	
 	public ArrayList<Pane> obstacle = new ArrayList<>();
 	public int count=0;
@@ -143,6 +146,9 @@ public class PlayNewGameController {
 			
 			if(b)
 			{
+				int s = Integer.parseInt(scoreButton.getText().substring(7));
+				s++;
+				scoreButton.setText("Score: "+s);
 				System.out.println("got yo");
 			}
 			
@@ -154,6 +160,9 @@ public class PlayNewGameController {
 			
 			if(b)
 			{
+				int s = Integer.parseInt(scoreButton.getText().substring(7));
+				s++;
+				scoreButton.setText("Score: "+s);
 				System.out.println("got yo");
 			}
 			
@@ -165,6 +174,9 @@ public class PlayNewGameController {
 			
 			if(b)
 			{
+				int s = Integer.parseInt(scoreButton.getText().substring(7));
+				s++;
+				scoreButton.setText("Score: "+s);
 				System.out.println("got yo");
 			}
 			

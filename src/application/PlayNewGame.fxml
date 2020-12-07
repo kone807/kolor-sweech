@@ -106,6 +106,52 @@
             <Rectangle fx:id="purple3" arcHeight="5.0" arcWidth="5.0" fill="#900dff" height="30.0" layoutX="-5.0" layoutY="80.0" rotate="45.0" stroke="#900dff" strokeType="INSIDE" width="200.0" />
          </children>
       </Pane>
+      <Button fx:id="scoreButton" layoutX="27.0" layoutY="699.0" mnemonicParsing="false" onAction="#goBack" prefHeight="60.0" prefWidth="133.0" text="SCORE: 0">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant color="#ffd23c" />
+               </light>
+            </Lighting>
+         </effect>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop color="#b06b6b" />
+                  <Stop color="#f81212" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Button>
+      <Button fx:id="saveGameButton" layoutX="430.0" layoutY="703.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="144.0" text="SAVE GAME">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant color="#ffd23c" />
+               </light>
+            </Lighting>
+         </effect>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop color="#b06b6b" />
+                  <Stop color="#f81212" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Button>
       
    </children>
 </AnchorPane>
