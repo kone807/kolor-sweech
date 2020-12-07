@@ -5,6 +5,8 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 import javafx.animation.KeyFrame;
@@ -45,25 +47,58 @@ public class PlayNewGameController {
 	@FXML public Button pauseButton;
 	
 	@FXML public AnchorPane form;
+	
 	@FXML public Pane pane1;
-	@FXML public Arc yellow;
-	@FXML public Arc pink;
-	@FXML public Arc purple;
-	@FXML public Arc blue;
+	@FXML public Pane pane2;
+	@FXML public Pane pane3;
+	
+	@FXML public Arc yellow1;
+	@FXML public Arc pink1;
+	@FXML public Arc purple1;
+	@FXML public Arc blue1;
+	@FXML public Arc yellow2;
+	@FXML public Arc pink2;
+	@FXML public Arc purple2;
+	@FXML public Arc blue2;
+	@FXML public Arc yellow3;
+	@FXML public Arc pink3;
+	@FXML public Arc purple3;
+	@FXML public Arc blue3;
 	
 	@FXML public Rectangle colorChanger;
 	
 	@FXML public Circle ball;
 	
+	public ArrayList<Pane> obstacle = new ArrayList<>();
+	public int count=0;
+	
+	public void initialize(URL url, ResourceBundle resources)
+	{
+		
+	}
+	
+	public void spawnObstacle()
+	{
+		int n = obstacle.size();
+		for(int i=0; i<n; i++)
+		{
+			if(i==count)
+				obstacle.get(i).setVisible(true);
+			else
+				obstacle.get(i).setVisible(false);
+		}
+		Random rand = new Random();
+		count=rand.nextInt(3);
+	}
 	public boolean intersectObstacle()
 	{
-		boolean b1 = Shape.intersect(ball, yellow).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(yellow.getStroke());
+		/*boolean b1 = Shape.intersect(ball, yellow).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(yellow.getStroke());
 		boolean b2 = Shape.intersect(ball, pink).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(pink.getStroke());
 		boolean b3 = Shape.intersect(ball, purple).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(purple.getStroke());
 		boolean b4 = Shape.intersect(ball, blue).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(blue.getStroke());
 		
 		if(b1 || b2 || b3 || b4) 
-		return true;
+		return true;*/
 		return false;
 	}
 	
@@ -87,8 +122,9 @@ public class PlayNewGameController {
     	
     		double y = ball.getLayoutY();
     		//System.out.println(y);
-    		if(y<=100)
-    			System.out.println("crossed page");
+    		if(y<=70)
+    			spawnObstacle();
+//    			System.out.println("crossed page");
     		
     		ball.setLayoutY((y+800-ball.getRadius()*3)%800);
     		
@@ -101,11 +137,20 @@ public class PlayNewGameController {
             if(intersectObstacle())
             {}//System.out.println("Collision!!!!");
             intersectColorChange();  
-            
+          //  pane1.setVisible(false);
     }
+    
+    
 	public void rotateRing() throws InterruptedException
 	{
+		obstacle.add(pane1);
+		obstacle.add(pane2);
+		obstacle.add(pane3);
+		spawnObstacle();
+		
 		setRotate(pane1, 360, 1);
+		setRotate(pane2, 360, 1);
+		setRotate(pane3, 360, 1);
 	}
 	
 	 public void setRotate(Pane a, int angle, int duration)
