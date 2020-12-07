@@ -7,15 +7,17 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="form" onMouseClicked="#jump" onMouseEntered="#rotateRing" prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PlayNewGameController">
    <children>
-      <Circle fx:id="ball" fill="#32dbf0" layoutX="299.0" layoutY="613.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="ball" fill="#32dbf0" layoutX="299.0" layoutY="662.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
       <Button fx:id="backButton" layoutX="38.0" layoutY="42.0" mnemonicParsing="false" onAction="#goBack" prefHeight="50.0" prefWidth="114.0" text="BACK">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -62,15 +64,20 @@
             </RadialGradient>
          </textFill>
       </Button>
-      <Line endX="48.0" endY="260.0" layoutX="347.0" layoutY="208.0" startX="-52.0" startY="132.0" stroke="#32dbf0" strokeWidth="20.0" />
-      <Line endX="25.0" endY="-4.0" layoutX="273.0" layoutY="343.0" startX="-59.0" startY="127.0" stroke="#ff0181" strokeWidth="20.0" />
-      <Line endX="42.0" endY="-3.0" layoutX="347.0" layoutY="217.0" startX="-52.5" startY="125.0" stroke="#e2ff00" strokeWidth="20.0" />
-      <Line endX="40.0" endY="-23.0" layoutX="253.0" layoutY="364.0" startX="-49.0" startY="-151.0" stroke="#900dff" strokeWidth="20.0" />
-      <ImageView fitHeight="99.0" fitWidth="106.0" layoutX="249.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../images/star.png" />
-         </image>
-      </ImageView>
+      <Pane fx:id="pane" layoutX="43.0" layoutY="206.0" prefHeight="374.0" prefWidth="515.0">
+         <children>
+            <Line endX="86.0" endY="274.0" layoutX="331.0" layoutY="55.0" startX="-52.0" startY="132.0" stroke="#32dbf0" strokeWidth="30.0" />
+            <Line endX="70.78680419921875" endY="160.0" layoutX="187.0" layoutY="13.0" startX="-84.0" startY="10.0" stroke="#ff0181" strokeWidth="30.0" />
+            <Line endX="-60.0" endY="23.0" layoutX="339.0" layoutY="149.0" startX="71.0" startY="-131.0" stroke="#900dff" strokeWidth="30.0" />
+            <ImageView fitHeight="99.0" fitWidth="106.0" layoutX="208.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/star.png" />
+               </image>
+            </ImageView>
+            <Line endX="10.0" endY="328.0" layoutX="109.0" layoutY="3.0" startX="156.0" startY="180.0" stroke="#e2ff00" strokeWidth="30.0" />
+         </children>
+      </Pane>
+      <Rectangle fx:id="colorChanger" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="251.0" layoutY="42.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
       
    </children>
 </AnchorPane>

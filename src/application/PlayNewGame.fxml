@@ -13,12 +13,13 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Arc?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="form" onMouseClicked="#jump" onMouseEntered="#rotateRing" prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PlayNewGameController">
    <children>
       <Group fx:id="gp1" layoutX="202.0" layoutY="305.0" />
-      <Circle fx:id="ball" fill="#32dbf0" layoutX="320.0" layoutY="609.0" radius="20.0" stroke="#32dbf0" strokeType="INSIDE" />
+      <Circle fx:id="ball" fill="#32dbf0" layoutX="320.0" layoutY="663.0" radius="20.0" stroke="#32dbf0" strokeType="INSIDE" />
       <Button fx:id="backButton" layoutX="38.0" layoutY="42.0" mnemonicParsing="false" onAction="#goBack" prefHeight="50.0" prefWidth="114.0" text="BACK">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -65,7 +66,7 @@
             </RadialGradient>
          </textFill>
       </Button>
-      <Pane fx:id="pane1" layoutX="147.0" layoutY="165.0" prefHeight="335.0" prefWidth="346.0">
+      <Pane fx:id="pane1" layoutX="147.0" layoutY="219.0" prefHeight="335.0" prefWidth="346.0">
          <children>
             <Arc fx:id="yellow" centerX="10.0" centerY="15.0" fill="#e2ff0000" layoutX="20.0" layoutY="141.0" length="90.0" radiusX="125.0" radiusY="125.0" rotate="270.0" stroke="#e2ff00" strokeWidth="30.0" />
             <Arc fx:id="purple" centerX="110.0" centerY="15.0" fill="#900dff00" layoutX="74.0" layoutY="140.0" length="90.0" radiusX="125.0" radiusY="125.0" stroke="#900dff" strokeWidth="30.0" />
@@ -78,6 +79,7 @@
             </ImageView>
          </children>
       </Pane>
+      <Rectangle fx:id="colorChanger" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="270.0" layoutY="42.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
       
    </children>
 </AnchorPane>
