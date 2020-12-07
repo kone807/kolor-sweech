@@ -56,14 +56,14 @@ public class PlayNewGameController {
 	@FXML public Arc pink1;
 	@FXML public Arc purple1;
 	@FXML public Arc blue1;
-	@FXML public Arc yellow2;
-	@FXML public Arc pink2;
-	@FXML public Arc purple2;
-	@FXML public Arc blue2;
-	@FXML public Arc yellow3;
-	@FXML public Arc pink3;
-	@FXML public Arc purple3;
-	@FXML public Arc blue3;
+	@FXML public Rectangle yellow2;
+	@FXML public Rectangle pink2;
+	@FXML public Rectangle purple2;
+	@FXML public Rectangle blue2;
+	@FXML public Rectangle yellow3;
+	@FXML public Rectangle pink3;
+	@FXML public Rectangle purple3;
+	@FXML public Rectangle blue3;
 	
 	@FXML public Rectangle colorChanger;
 	
@@ -91,15 +91,20 @@ public class PlayNewGameController {
 		count=rand.nextInt(3);
 	}
 	public boolean intersectObstacle()
-	{
-		/*boolean b1 = Shape.intersect(ball, yellow).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(yellow.getStroke());
-		boolean b2 = Shape.intersect(ball, pink).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(pink.getStroke());
-		boolean b3 = Shape.intersect(ball, purple).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(purple.getStroke());
-		boolean b4 = Shape.intersect(ball, blue).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(blue.getStroke());
+	{	return false;
+		/*if(pane1.isVisible())
+		{
+			boolean b1 = Shape.intersect(ball, yellow1).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(yellow1.getFill());
+			boolean b2 = Shape.intersect(ball, pink1).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(pink1.getFill());
+			boolean b3 = Shape.intersect(ball, purple1).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(purple1.getFill());
+			boolean b4 = Shape.intersect(ball, blue1).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(blue1.getFill());
+			
+			if(b1 || b2 || b3 || b4) 
+			return true;
+			return false;
+		}
+		return false; */
 		
-		if(b1 || b2 || b3 || b4) 
-		return true;*/
-		return false;
 	}
 	
 	public void intersectColorChange()
@@ -122,7 +127,7 @@ public class PlayNewGameController {
     	
     		double y = ball.getLayoutY();
     		//System.out.println(y);
-    		if(y<=70)
+    		if(y<=85)
     			spawnObstacle();
 //    			System.out.println("crossed page");
     		
@@ -135,7 +140,7 @@ public class PlayNewGameController {
             timeline.play();
             
             if(intersectObstacle())
-            {}//System.out.println("Collision!!!!");
+            System.out.println("Collision!!!!");
             intersectColorChange();  
           //  pane1.setVisible(false);
     }
@@ -146,7 +151,6 @@ public class PlayNewGameController {
 		obstacle.add(pane1);
 		obstacle.add(pane2);
 		obstacle.add(pane3);
-		spawnObstacle();
 		
 		setRotate(pane1, 360, 1);
 		setRotate(pane2, 360, 1);
