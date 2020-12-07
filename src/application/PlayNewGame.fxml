@@ -73,7 +73,7 @@
             <Arc fx:id="purple1" centerX="110.0" centerY="15.0" fill="#900dff00" layoutX="74.0" layoutY="140.0" length="90.0" radiusX="125.0" radiusY="125.0" stroke="#900dff" strokeWidth="30.0" />
             <Arc fx:id="blue1" centerX="10.0" centerY="120.0" fill="#32dbf000" layoutX="21.0" layoutY="183.0" length="90.0" radiusX="125.0" radiusY="125.0" rotate="180.0" stroke="#32dbf0" strokeWidth="30.0" />
             <Arc fx:id="pink1" centerX="110.0" centerY="120.0" fill="#ff018100" layoutX="74.0" layoutY="182.0" length="90.0" radiusX="125.0" radiusY="125.0" rotate="90.0" stroke="#ff0181" strokeWidth="30.0" />
-            <ImageView fitHeight="99.0" fitWidth="106.0" layoutX="119.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="star1" fitHeight="99.0" fitWidth="106.0" layoutX="119.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/star.png" />
                </image>
@@ -82,7 +82,7 @@
       </Pane>
       <Pane fx:id="pane2" layoutX="98.0" layoutY="204.0" prefHeight="399.0" prefWidth="404.0" visible="false">
          <children>
-            <ImageView fitHeight="99.0" fitWidth="106.0" layoutX="167.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="star2" fitHeight="99.0" fitWidth="106.0" layoutX="167.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/star.png" />
                </image>
@@ -95,7 +95,7 @@
       </Pane>
       <Pane fx:id="pane3" layoutX="108.0" layoutY="214.0" prefHeight="328.0" prefWidth="325.0" visible="false">
          <children>
-            <ImageView fitHeight="99.0" fitWidth="106.0" layoutX="113.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="star3" fitHeight="99.0" fitWidth="106.0" layoutX="113.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/star.png" />
                </image>

@@ -25,6 +25,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -65,6 +66,10 @@ public class PlayNewGameController {
 	@FXML public Rectangle purple3;
 	@FXML public Rectangle blue3;
 	
+	@FXML public ImageView star1;
+	@FXML public ImageView star2;
+	@FXML public ImageView star3;
+	
 	@FXML public Rectangle colorChanger;
 	
 	@FXML public Circle ball;
@@ -91,22 +96,80 @@ public class PlayNewGameController {
 		count=rand.nextInt(3);
 	}
 	public boolean intersectObstacle()
-	{	return false;
-		/*if(pane1.isVisible())
+	{	
+		if(pane1.isVisible())
 		{
-			boolean b1 = Shape.intersect(ball, yellow1).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(yellow1.getFill());
-			boolean b2 = Shape.intersect(ball, pink1).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(pink1.getFill());
-			boolean b3 = Shape.intersect(ball, purple1).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(purple1.getFill());
-			boolean b4 = Shape.intersect(ball, blue1).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(blue1.getFill());
+			boolean b1 = Shape.intersect(ball, yellow1).getBoundsInLocal().isEmpty()==false && !ball.getStroke().equals(yellow1.getStroke());
+			boolean b2 = Shape.intersect(ball, pink1).getBoundsInLocal().isEmpty()==false && !ball.getStroke().equals(pink1.getStroke());
+			boolean b3 = Shape.intersect(ball, purple1).getBoundsInLocal().isEmpty()==false && !ball.getStroke().equals(purple1.getStroke());
+			boolean b4 = Shape.intersect(ball, blue1).getBoundsInLocal().isEmpty()==false && !ball.getStroke().equals(blue1.getStroke());
 			
+			if(b4)
+			System.out.println(ball.getFill()+" "+blue1.getFill());
 			if(b1 || b2 || b3 || b4) 
 			return true;
-			return false;
 		}
-		return false; */
+		
+		if(pane2.isVisible())
+		{
+			boolean b1 = Shape.intersect(ball, yellow2).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(yellow2.getFill());
+			boolean b2 = Shape.intersect(ball, pink2).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(pink2.getFill());
+			boolean b3 = Shape.intersect(ball, purple2).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(purple2.getFill());
+			boolean b4 = Shape.intersect(ball, blue2).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(blue2.getFill());
+			
+			if(b1 || b2 || b3 || b4) 
+			return true;	
+		}
+		
+		if(pane3.isVisible())
+		{
+			boolean b1 = Shape.intersect(ball, yellow3).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(yellow3.getFill());
+			boolean b2 = Shape.intersect(ball, pink3).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(pink3.getFill());
+			boolean b3 = Shape.intersect(ball, purple3).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(purple3.getFill());
+			boolean b4 = Shape.intersect(ball, blue3).getBoundsInLocal().isEmpty()==false && !ball.getFill().equals(blue3.getFill());
+			
+			if(b1 || b2 || b3 || b4) 
+			return true;	
+		}
+		return false; 
 		
 	}
 	
+	public void intersectStar()
+	{
+		if(pane1.isVisible())
+		{
+			boolean b = ball.getLayoutY() <= pane1.getPrefHeight()+pane1.getLayoutY()-star1.getLayoutY();
+			
+			if(b)
+			{
+				System.out.println("got yo");
+			}
+			
+		}
+		
+		if(pane2.isVisible())
+		{
+			boolean b = ball.getLayoutY() <= pane2.getPrefHeight()+pane2.getLayoutY()-star2.getLayoutY();
+			
+			if(b)
+			{
+				System.out.println("got yo");
+			}
+			
+		}
+		
+		if(pane3.isVisible())
+		{
+			boolean b = ball.getLayoutY() <= pane3.getPrefHeight()+pane3.getLayoutY()-star3.getLayoutY();
+			
+			if(b)
+			{
+				System.out.println("got yo");
+			}
+			
+		}
+	}
 	public void intersectColorChange()
 	{
 		boolean b = Shape.intersect(colorChanger, ball).getBoundsInLocal().isEmpty()==false;
@@ -126,6 +189,11 @@ public class PlayNewGameController {
     {
     	
     		double y = ball.getLayoutY();
+    		if(intersectObstacle())
+                System.out.println("Collision!!!!");
+                intersectColorChange();  
+                intersectStar();
+                
     		//System.out.println(y);
     		if(y<=85)
     			spawnObstacle();
@@ -138,10 +206,6 @@ public class PlayNewGameController {
                     new KeyValue(ball.layoutYProperty(), bounds.getMaxY()-ball.getRadius()/16)));
             timeline.setCycleCount(2);
             timeline.play();
-            
-            if(intersectObstacle())
-            System.out.println("Collision!!!!");
-            intersectColorChange();  
           //  pane1.setVisible(false);
     }
     
