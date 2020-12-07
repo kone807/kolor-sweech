@@ -79,6 +79,8 @@ public class PlayNewGameController implements Serializable{
 	
 	public ArrayList<Pane> obstacle = new ArrayList<>();
 	public int count=0;
+	public boolean levelDone=false;
+	//public boolean colorChanged=false;
 	
 	public void initialize(URL url, ResourceBundle resources)
 	{
@@ -97,6 +99,12 @@ public class PlayNewGameController implements Serializable{
 		}
 		Random rand = new Random();
 		count=rand.nextInt(3);
+		levelDone=false;
+		//colorChanged=false;
+		star1.setVisible(true);
+		star2.setVisible(true);
+		star3.setVisible(true);
+		ball.setLayoutY(790);
 	}
 	public boolean intersectObstacle()
 	{	
@@ -107,8 +115,6 @@ public class PlayNewGameController implements Serializable{
 			boolean b3 = Shape.intersect(ball, purple1).getBoundsInLocal().isEmpty()==false && !ball.getStroke().equals(purple1.getStroke());
 			boolean b4 = Shape.intersect(ball, blue1).getBoundsInLocal().isEmpty()==false && !ball.getStroke().equals(blue1.getStroke());
 			
-			if(b4)
-			System.out.println(ball.getFill()+" "+blue1.getFill());
 			if(b1 || b2 || b3 || b4) 
 			return true;
 		}
@@ -144,11 +150,13 @@ public class PlayNewGameController implements Serializable{
 		{
 			boolean b = ball.getLayoutY() <= pane1.getPrefHeight()+pane1.getLayoutY()-star1.getLayoutY();
 			
-			if(b)
+			if(b && !levelDone)
 			{
 				int s = Integer.parseInt(scoreButton.getText().substring(7));
 				s++;
 				scoreButton.setText("Score: "+s);
+				star1.setVisible(false);
+				levelDone=true;
 				System.out.println("got yo");
 			}
 			
@@ -158,11 +166,13 @@ public class PlayNewGameController implements Serializable{
 		{
 			boolean b = ball.getLayoutY() <= pane2.getPrefHeight()+pane2.getLayoutY()-star2.getLayoutY();
 			
-			if(b)
+			if(b && !levelDone)
 			{
 				int s = Integer.parseInt(scoreButton.getText().substring(7));
 				s++;
 				scoreButton.setText("Score: "+s);
+				star2.setVisible(false);
+				levelDone=true;
 				System.out.println("got yo");
 			}
 			
@@ -172,11 +182,13 @@ public class PlayNewGameController implements Serializable{
 		{
 			boolean b = ball.getLayoutY() <= pane3.getPrefHeight()+pane3.getLayoutY()-star3.getLayoutY();
 			
-			if(b)
+			if(b && !levelDone)
 			{
 				int s = Integer.parseInt(scoreButton.getText().substring(7));
 				s++;
 				scoreButton.setText("Score: "+s);
+				star3.setVisible(false);
+				levelDone=true;
 				System.out.println("got yo");
 			}
 			
@@ -194,6 +206,8 @@ public class PlayNewGameController implements Serializable{
 			//System.out.println(newColour+" "+ball.getFill());
 			ball.setFill(newColour);
 			ball.setStroke(newColour);
+			//colorChanged=true;
+			spawnObstacle();
 		}
 	}
 	
@@ -203,15 +217,19 @@ public class PlayNewGameController implements Serializable{
     		double y = ball.getLayoutY();
     		if(intersectObstacle())
                 System.out.println("Collision!!!!");
-                intersectColorChange();  
-                intersectStar();
-                
-    		//System.out.println(y);
-    		if(y<=85)
-    			spawnObstacle();
-//    			System.out.println("crossed page");
     		
     		ball.setLayoutY((y+800-ball.getRadius()*3)%800);
+    		
+    			intersectStar();
+                intersectColorChange();  
+                
+                
+    		//System.out.println(y);
+    	//	if(y<=10)
+    		//	spawnObstacle();
+//    			System.out.println("crossed page");
+    		
+    		
     		
     		Bounds bounds = form.getBoundsInLocal();
             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5), 

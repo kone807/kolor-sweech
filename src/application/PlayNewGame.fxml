@@ -66,7 +66,7 @@
             </RadialGradient>
          </textFill>
       </Button>
-      <Rectangle fx:id="colorChanger" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="261.0" layoutY="42.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+      <Rectangle fx:id="colorChanger" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="23.0" layoutX="298.0" layoutY="3.0" stroke="BLACK" strokeType="INSIDE" width="26.0" />
       <Pane fx:id="pane1" layoutX="147.0" layoutY="219.0" prefHeight="335.0" prefWidth="346.0">
          <children>
             <Arc fx:id="yellow1" centerX="10.0" centerY="15.0" fill="#e2ff0000" layoutX="20.0" layoutY="141.0" length="90.0" radiusX="125.0" radiusY="125.0" rotate="270.0" stroke="#e2ff00" strokeWidth="30.0" />
