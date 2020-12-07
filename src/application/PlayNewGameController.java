@@ -189,7 +189,7 @@ public class PlayNewGameController implements Serializable{
 				scoreButton.setText("Score: "+s);
 				star3.setVisible(false);
 				levelDone=true;
-				System.out.println("got you");
+				System.out.println("got you there");
 			}
 			
 		}
