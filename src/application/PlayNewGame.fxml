@@ -67,6 +67,19 @@
          </textFill>
       </Button>
       <Rectangle fx:id="colorChanger" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="23.0" layoutX="298.0" layoutY="3.0" stroke="BLACK" strokeType="INSIDE" width="26.0" />
+      <Pane fx:id="pane3" layoutX="235.0" layoutY="204.0" prefHeight="328.0" prefWidth="325.0" visible="false">
+         <children>
+            <ImageView fx:id="star3" fitHeight="99.0" fitWidth="106.0" layoutX="113.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/star.png" />
+               </image>
+            </ImageView>
+            <Rectangle fx:id="blue3" arcHeight="5.0" arcWidth="5.0" fill="#32dbf0" height="30.0" layoutX="117.0" layoutY="80.0" rotate="135.0" stroke="#32dbf0" strokeType="INSIDE" width="200.0" />
+            <Rectangle fx:id="pink3" arcHeight="5.0" arcWidth="5.0" fill="#ff0181" height="30.0" layoutX="117.0" layoutY="206.0" rotate="45.0" stroke="#ff0181" strokeType="INSIDE" width="200.0" />
+            <Rectangle fx:id="yellow3" arcHeight="5.0" arcWidth="5.0" fill="#e2ff00" height="30.0" layoutX="-5.0" layoutY="206.0" rotate="135.0" stroke="#e2ff00" strokeType="INSIDE" width="200.0" />
+            <Rectangle fx:id="purple3" arcHeight="5.0" arcWidth="5.0" fill="#900dff" height="30.0" layoutX="-5.0" layoutY="80.0" rotate="45.0" stroke="#900dff" strokeType="INSIDE" width="200.0" />
+         </children>
+      </Pane>
       <Pane fx:id="pane1" layoutX="147.0" layoutY="219.0" prefHeight="335.0" prefWidth="346.0">
          <children>
             <Arc fx:id="yellow1" centerX="10.0" centerY="15.0" fill="#e2ff0000" layoutX="20.0" layoutY="141.0" length="90.0" radiusX="125.0" radiusY="125.0" rotate="270.0" stroke="#e2ff00" strokeWidth="30.0" />
@@ -93,19 +106,6 @@
             <Rectangle fx:id="purple2" arcHeight="5.0" arcWidth="5.0" fill="#900dff" height="30.0" layoutX="-33.0" layoutY="294.0" rotate="45.0" stroke="#900dff" strokeType="INSIDE" width="300.0" />
          </children>
       </Pane>
-      <Pane fx:id="pane3" layoutX="108.0" layoutY="214.0" prefHeight="328.0" prefWidth="325.0" visible="false">
-         <children>
-            <ImageView fx:id="star3" fitHeight="99.0" fitWidth="106.0" layoutX="113.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../images/star.png" />
-               </image>
-            </ImageView>
-            <Rectangle fx:id="blue3" arcHeight="5.0" arcWidth="5.0" fill="#32dbf0" height="30.0" layoutX="117.0" layoutY="80.0" rotate="135.0" stroke="#32dbf0" strokeType="INSIDE" width="200.0" />
-            <Rectangle fx:id="pink3" arcHeight="5.0" arcWidth="5.0" fill="#ff0181" height="30.0" layoutX="117.0" layoutY="206.0" rotate="45.0" stroke="#ff0181" strokeType="INSIDE" width="200.0" />
-            <Rectangle fx:id="yellow3" arcHeight="5.0" arcWidth="5.0" fill="#e2ff00" height="30.0" layoutX="-5.0" layoutY="206.0" rotate="135.0" stroke="#e2ff00" strokeType="INSIDE" width="200.0" />
-            <Rectangle fx:id="purple3" arcHeight="5.0" arcWidth="5.0" fill="#900dff" height="30.0" layoutX="-5.0" layoutY="80.0" rotate="45.0" stroke="#900dff" strokeType="INSIDE" width="200.0" />
-         </children>
-      </Pane>
       <Button fx:id="scoreButton" layoutX="27.0" layoutY="699.0" mnemonicParsing="false" onAction="#goBack" prefHeight="60.0" prefWidth="133.0" text="SCORE: 0">
          <font>
             <Font name="System Bold" size="19.0" />
@@ -129,7 +129,7 @@
             </RadialGradient>
          </textFill>
       </Button>
-      <Button fx:id="saveGameButton" layoutX="430.0" layoutY="703.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="144.0" text="SAVE GAME">
+      <Button fx:id="saveGameButton" layoutX="430.0" layoutY="703.0" mnemonicParsing="false" onAction="#saveGame" prefHeight="51.0" prefWidth="144.0" text="SAVE GAME">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>

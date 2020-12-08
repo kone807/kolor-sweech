@@ -3,7 +3,10 @@ package application;
 
 
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
@@ -76,6 +79,7 @@ public class PlayNewGameController implements Serializable{
 	@FXML public Circle ball;
 	
 	@FXML public Button scoreButton;
+	@FXML public Button saveGameButton;
 	
 	public ArrayList<Pane> obstacle = new ArrayList<>();
 	public int count=0;
@@ -87,6 +91,16 @@ public class PlayNewGameController implements Serializable{
 		
 	}
 	
+	public void saveGame()
+	{
+		try {
+			FileOutputStream fs = new FileOutputStream("try.text");
+			ObjectOutputStream os = new ObjectOutputStream(fs);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public void spawnObstacle()
 	{
 		int n = obstacle.size();
@@ -211,13 +225,29 @@ public class PlayNewGameController implements Serializable{
 		}
 	}
 	
+	public void gameOver() throws IOException
+	{
+		Parent t = FXMLLoader.load(getClass().getResource("GameOver.fxml"));
+    	Scene ts = new Scene(t);
+    	
+    	//stage info
+    	Stage window = (Stage)(form.getScene().getWindow());
+    	
+    	window.setScene(ts);
+    	window.show();
+	}
     public void jump()
     {
     	
     		double y = ball.getLayoutY();
     		if(intersectObstacle())
-                System.out.println("Collision!!!!");
-    		
+				try {
+					gameOver();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+    		    		
     		ball.setLayoutY((y+800-ball.getRadius()*3)%800);
     		
     			intersectStar();
@@ -253,7 +283,8 @@ public class PlayNewGameController implements Serializable{
 	
 	 public void setRotate(Pane a, int angle, int duration)
 	    {
-	    	RotateTransition rt = new RotateTransition(Duration.seconds(125), a);
+		 // set rotation speed here
+	    	RotateTransition rt = new RotateTransition(Duration.seconds(160), a);
 	    	rt.setFromAngle(0);
 	    	rt.setToAngle(720*30);
 	    	rt.setCycleCount(3);
@@ -267,7 +298,7 @@ public class PlayNewGameController implements Serializable{
 	    	
 	    	//stage info
 	    	Stage window = (Stage)(((Node) event.getSource()).getScene().getWindow());
-	    	
+	    	System.out.println(window+" widnow");
 	    	window.setScene(ts);
 	    	window.show();
 	    }

@@ -36,8 +36,15 @@ public class GameOverController {
 		
 	}
 	
-	public void goBack()
+	public void goBack(ActionEvent event) throws IOException
 	{
-		
+		Parent t = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
+    	Scene ts = new Scene(t);
+    	
+    	//stage info
+    	Stage window = (Stage)(((Node) event.getSource()).getScene().getWindow());
+    	
+    	window.setScene(ts);
+    	window.show();
 	}
 }
