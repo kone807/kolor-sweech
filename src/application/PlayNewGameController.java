@@ -81,9 +81,16 @@ public class PlayNewGameController implements Serializable{
 	@FXML public Button scoreButton;
 	@FXML public Button saveGameButton;
 	
+	@FXML public Pane gameOverPane;
+	@FXML public Button resurrectButton;
+	@FXML public Button gobackButton;
+	@FXML public TextArea scoreTextArea;
+	
 	public ArrayList<Pane> obstacle = new ArrayList<>();
 	public int count=0;
 	public boolean levelDone=false;
+	public int score=0;
+	public int saveGameCount=0;
 	//public boolean colorChanged=false;
 	
 	public void initialize(URL url, ResourceBundle resources)
@@ -91,11 +98,41 @@ public class PlayNewGameController implements Serializable{
 		
 	}
 	
+	public void resurrect()
+	{
+		
+	}
+	
+	public void gogoBack(ActionEvent event) throws IOException
+	{
+		Parent t = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
+    	Scene ts = new Scene(t);
+    	
+    	//stage info
+    	Stage window = (Stage)(((Node) event.getSource()).getScene().getWindow());
+    	
+    	window.setScene(ts);
+    	window.show();
+	}
+	
 	public void saveGame()
 	{
 		try {
-			FileOutputStream fs = new FileOutputStream("try.text");
+			
+			Main2 obj = new Main2();
+			obj.ballColour=ball.getStroke().toString();
+			obj.ballY=ball.getLayoutY();
+			obj.pane1Vis=pane1.isVisible();
+			obj.pane2Vis=pane2.isVisible();
+			obj.pane3Vis=pane3.isVisible();
+			obj.score=score;
+			
+			FileOutputStream fs = new FileOutputStream("savegame"+saveGameCount+".txt");
+			saveGameCount++;
 			ObjectOutputStream os = new ObjectOutputStream(fs);
+			os.writeObject(obj);
+			os.close(); 
+			System.out.println("written");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -166,9 +203,8 @@ public class PlayNewGameController implements Serializable{
 			
 			if(b && !levelDone)
 			{
-				int s = Integer.parseInt(scoreButton.getText().substring(7));
-				s++;
-				scoreButton.setText("Score: "+s);
+				score++;
+				scoreButton.setText("Score: "+score);
 				star1.setVisible(false);
 				levelDone=true;
 				System.out.println("got yo");
@@ -182,9 +218,8 @@ public class PlayNewGameController implements Serializable{
 			
 			if(b && !levelDone)
 			{
-				int s = Integer.parseInt(scoreButton.getText().substring(7));
-				s++;
-				scoreButton.setText("Score: "+s);
+				score++;
+				scoreButton.setText("Score: "+score);
 				star2.setVisible(false);
 				levelDone=true;
 				System.out.println("got yo");
@@ -198,9 +233,8 @@ public class PlayNewGameController implements Serializable{
 			
 			if(b && !levelDone)
 			{
-				int s = Integer.parseInt(scoreButton.getText().substring(7));
-				s++;
-				scoreButton.setText("Score: "+s);
+				score++;
+				scoreButton.setText("Score: "+score);
 				star3.setVisible(false);
 				levelDone=true;
 				System.out.println("got you there");
@@ -227,14 +261,19 @@ public class PlayNewGameController implements Serializable{
 	
 	public void gameOver() throws IOException
 	{
-		Parent t = FXMLLoader.load(getClass().getResource("GameOver.fxml"));
-    	Scene ts = new Scene(t);
-    	
-    	//stage info
-    	Stage window = (Stage)(form.getScene().getWindow());
-    	
-    	window.setScene(ts);
-    	window.show();
+		
+		gameOverPane.setVisible(true);
+		
+		scoreTextArea.setText("Score is: "+score);
+		ball.setVisible(false);
+//		Parent t = FXMLLoader.load(getClass().getResource("GameOver.fxml"));
+//    	Scene ts = new Scene(t);
+//    	
+//    	//stage info
+//    	Stage window = (Stage)(form.getScene().getWindow());
+//    	
+//    	window.setScene(ts);
+//    	window.show();
 	}
     public void jump()
     {
@@ -266,6 +305,14 @@ public class PlayNewGameController implements Serializable{
                     new KeyValue(ball.layoutYProperty(), bounds.getMaxY()-ball.getRadius()/16)));
             timeline.setCycleCount(2);
             timeline.play();
+            
+            if(intersectObstacle())
+				try {
+					gameOver();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
           //  pane1.setVisible(false);
     }
     
