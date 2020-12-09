@@ -1,7 +1,7 @@
 package application;
 
 
-
+//animation timer
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -13,8 +13,10 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
+import javafx.animation.PauseTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -45,7 +47,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
-public class PlayNewGameController implements Serializable{
+public class PlayNewGameController extends AnimationTimer implements Serializable {
 	
 	
 	@FXML public Button backButton;
@@ -98,9 +100,47 @@ public class PlayNewGameController implements Serializable{
 		
 	}
 	
-	public void resurrect()
+	public void pause(ActionEvent e)
 	{
 		
+	}
+	public void resurrect()
+	{
+		// 5 stars needed per resurrection
+		// it is assumed that score will also reduce
+		
+		if(score<1)
+		{
+			System.out.println("Not Enough Stars");
+		}
+		else
+		{
+			score-=1;
+			scoreButton.setText("SCORE: "+score);
+			ball.setVisible(true);
+			System.out.print("here");
+			ball.setLayoutY(790);
+			gameOverPane.setVisible(false);
+		}
+	}
+	
+	public void gameOver() throws IOException
+	{
+		
+		gameOverPane.setVisible(true);
+		
+		scoreTextArea.setText("Score is: "+score);
+		//ball.setVisible(false);
+		//PauseTransition pause = new PauseTransition(Duration.seconds(1000));
+		//pause.play();
+//		Parent t = FXMLLoader.load(getClass().getResource("GameOver.fxml"));
+//    	Scene ts = new Scene(t);
+//    	
+//    	//stage info
+//    	Stage window = (Stage)(form.getScene().getWindow());
+//    	
+//    	window.setScene(ts);
+//    	window.show();
 	}
 	
 	public void gogoBack(ActionEvent event) throws IOException
@@ -119,6 +159,11 @@ public class PlayNewGameController implements Serializable{
 	{
 		try {
 			
+			double yx = pane1.getLocalToSceneTransform().getMyx();
+			double yy = pane1.getLocalToSceneTransform().getMyy();
+			double angle = Math.atan2(yx, yy);
+			angle = angle<0?angle+360:angle;
+			
 			Main2 obj = new Main2();
 			obj.ballColour=ball.getStroke().toString();
 			obj.ballY=ball.getLayoutY();
@@ -126,8 +171,19 @@ public class PlayNewGameController implements Serializable{
 			obj.pane2Vis=pane2.isVisible();
 			obj.pane3Vis=pane3.isVisible();
 			obj.score=score;
+			obj.pane1Deg=angle;
+			yx = pane2.getLocalToSceneTransform().getMyx();
+			yy = pane2.getLocalToSceneTransform().getMyy();
+			angle = Math.atan2(yx, yy);
+			angle = angle<0?angle+360:angle;
+			obj.pane2Deg=angle;
+			yx = pane3.getLocalToSceneTransform().getMyx();
+			yy = pane3.getLocalToSceneTransform().getMyy();
+			angle = Math.atan2(yx, yy);
+			angle = angle<0?angle+360:angle;
+			obj.pane3Deg=angle;
 			
-			FileOutputStream fs = new FileOutputStream("savegame"+saveGameCount+".txt");
+			FileOutputStream fs = new FileOutputStream("SavedGames/savegame"+saveGameCount+".txt");
 			saveGameCount++;
 			ObjectOutputStream os = new ObjectOutputStream(fs);
 			os.writeObject(obj);
@@ -259,26 +315,31 @@ public class PlayNewGameController implements Serializable{
 		}
 	}
 	
-	public void gameOver() throws IOException
+	@Override
+	public void handle(long x)
 	{
-		
-		gameOverPane.setVisible(true);
-		
-		scoreTextArea.setText("Score is: "+score);
-		ball.setVisible(false);
-//		Parent t = FXMLLoader.load(getClass().getResource("GameOver.fxml"));
-//    	Scene ts = new Scene(t);
-//    	
-//    	//stage info
-//    	Stage window = (Stage)(form.getScene().getWindow());
-//    	
-//    	window.setScene(ts);
-//    	window.show();
+		doHandle();
 	}
-    public void jump()
+	
+	private void doHandle()
+	{
+		int j=50;
+		while(true)
+		{
+			if(j<=0)
+				stop();
+			else
+			{
+				ball.setLayoutY(ball.getLayoutY()+5);
+				j-=5;
+			}
+		}
+	}
+    public void jump() throws InterruptedException
     {
     	
     		double y = ball.getLayoutY();
+    		System.out.println(y);
     		if(intersectObstacle())
 				try {
 					gameOver();
@@ -297,14 +358,20 @@ public class PlayNewGameController implements Serializable{
     	//	if(y<=10)
     		//	spawnObstacle();
 //    			System.out.println("crossed page");
-    		
-    		
-    		
+//    		
+//        	AnimationTimer timer = new AnimationTimer() {
+//        		@Override
+//        		public void handle(long now)
+//        		{
+//        			doHandle();
+//        		}
+//        	};
+//        	timer.start();
     		Bounds bounds = form.getBoundsInLocal();
             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5), 
                     new KeyValue(ball.layoutYProperty(), bounds.getMaxY()-ball.getRadius()/16)));
             timeline.setCycleCount(2);
-            timeline.play();
+            timeline.play(); 
             
             if(intersectObstacle())
 				try {
