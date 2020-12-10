@@ -23,6 +23,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -47,7 +48,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
-public class PlayNewGameController extends AnimationTimer implements Serializable {
+public class PlayNewGameController extends AnimationTimer implements Serializable, Initializable {
 	
 	
 	@FXML public Button backButton;
@@ -95,9 +96,16 @@ public class PlayNewGameController extends AnimationTimer implements Serializabl
 	public int saveGameCount=0;
 	//public boolean colorChanged=false;
 	
+	@Override
 	public void initialize(URL url, ResourceBundle resources)
 	{
-		
+		System.out.print("init");
+		//Stage stage = (Stage)form.getScene().getWindow();
+	/*	Main2 savedObj = (Main2)stage.getUserData();
+		if(savedObj==null)
+			System.out.print("nothing saved yet");
+		else
+			System.out.println("something is saved"); */
 	}
 	
 	public void pause(ActionEvent e)
@@ -386,6 +394,26 @@ public class PlayNewGameController extends AnimationTimer implements Serializabl
     
 	public void rotateRing() throws InterruptedException
 	{
+		
+		Stage stage = (Stage)form.getScene().getWindow();
+		Main2 savedObj = (Main2)stage.getUserData();
+		if(savedObj==null)
+			System.out.print("nothing saved yet");
+		else
+		{
+			System.out.println(savedObj.ballColour);
+			ball.setLayoutY(savedObj.ballY);
+			//ball.setFill(Color.web(savedObj.ballColour));
+			//ball.setStroke(Color.web(savedObj.ballColour));
+			score=savedObj.score;
+			System.out.println("score: "+savedObj.score);
+			pane1.setVisible(savedObj.pane1Vis);
+			pane2.setVisible(savedObj.pane2Vis);
+			pane3.setVisible(savedObj.pane3Vis);
+		}
+		
+		savedObj=null;
+		
 		obstacle.add(pane1);
 		obstacle.add(pane2);
 		obstacle.add(pane3);
