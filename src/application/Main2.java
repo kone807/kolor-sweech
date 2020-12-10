@@ -39,9 +39,13 @@ public class Main2 implements Serializable {
 	public boolean pane1Vis;
 	public boolean pane2Vis;
 	public boolean pane3Vis;
+	public boolean pane1Star;
+	public boolean pane2Star;
+	public boolean pane3Star;
 	public double pane1Deg;
 	public double pane2Deg;
 	public double pane3Deg;
+	public boolean resOnce;
 //	@FXML public Button backButton;
 //	@FXML public Button pauseButton;
 //	

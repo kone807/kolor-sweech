@@ -44,6 +44,7 @@ import javafx.scene.shape.Arc;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
+import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -99,13 +100,26 @@ public class PlayNewGameController extends AnimationTimer implements Serializabl
 	@Override
 	public void initialize(URL url, ResourceBundle resources)
 	{
-		System.out.print("init");
+		
+		
 		//Stage stage = (Stage)form.getScene().getWindow();
-	/*	Main2 savedObj = (Main2)stage.getUserData();
+		/*Main2 savedObj = (Main2)stage.getUserData();
 		if(savedObj==null)
 			System.out.print("nothing saved yet");
 		else
-			System.out.println("something is saved"); */
+		{
+			System.out.println(savedObj.ballColour);
+			ball.setLayoutY(savedObj.ballY);
+			//ball.setFill(Color.web(savedObj.ballColour));
+			//ball.setStroke(Color.web(savedObj.ballColour));
+			score=savedObj.score;
+			System.out.println("score: "+savedObj.score);
+			pane1.setVisible(savedObj.pane1Vis);
+			pane2.setVisible(savedObj.pane2Vis);
+			pane3.setVisible(savedObj.pane3Vis); */
+		
+		
+		//savedObj=null;
 	}
 	
 	public void pause(ActionEvent e)
@@ -138,7 +152,7 @@ public class PlayNewGameController extends AnimationTimer implements Serializabl
 		gameOverPane.setVisible(true);
 		
 		scoreTextArea.setText("Score is: "+score);
-		//ball.setVisible(false);
+		ball.setVisible(false);
 		//PauseTransition pause = new PauseTransition(Duration.seconds(1000));
 		//pause.play();
 //		Parent t = FXMLLoader.load(getClass().getResource("GameOver.fxml"));
@@ -180,6 +194,10 @@ public class PlayNewGameController extends AnimationTimer implements Serializabl
 			obj.pane3Vis=pane3.isVisible();
 			obj.score=score;
 			obj.pane1Deg=angle;
+			obj.resOnce=false;
+			obj.pane1Star=star1.isVisible();
+			obj.pane2Star=star2.isVisible();
+			obj.pane3Star=star3.isVisible();
 			yx = pane2.getLocalToSceneTransform().getMyx();
 			yy = pane2.getLocalToSceneTransform().getMyy();
 			angle = Math.atan2(yx, yy);
@@ -261,7 +279,7 @@ public class PlayNewGameController extends AnimationTimer implements Serializabl
 	
 	public void intersectStar()
 	{
-		if(pane1.isVisible())
+		if(pane1.isVisible() && star1.isVisible())
 		{
 			boolean b = ball.getLayoutY() <= pane1.getPrefHeight()+pane1.getLayoutY()-star1.getLayoutY();
 			
@@ -276,7 +294,7 @@ public class PlayNewGameController extends AnimationTimer implements Serializabl
 			
 		}
 		
-		if(pane2.isVisible())
+		if(pane2.isVisible() && star2.isVisible())
 		{
 			boolean b = ball.getLayoutY() <= pane2.getPrefHeight()+pane2.getLayoutY()-star2.getLayoutY();
 			
@@ -291,7 +309,7 @@ public class PlayNewGameController extends AnimationTimer implements Serializabl
 			
 		}
 		
-		if(pane3.isVisible())
+		if(pane3.isVisible() && star3.isVisible())
 		{
 			boolean b = ball.getLayoutY() <= pane3.getPrefHeight()+pane3.getLayoutY()-star3.getLayoutY();
 			
@@ -399,17 +417,22 @@ public class PlayNewGameController extends AnimationTimer implements Serializabl
 		Main2 savedObj = (Main2)stage.getUserData();
 		if(savedObj==null)
 			System.out.print("nothing saved yet");
-		else
+		else if(!savedObj.resOnce)
 		{
+			savedObj.resOnce=true;
 			System.out.println(savedObj.ballColour);
 			ball.setLayoutY(savedObj.ballY);
-			//ball.setFill(Color.web(savedObj.ballColour));
-			//ball.setStroke(Color.web(savedObj.ballColour));
+			ball.setFill(Color.web(savedObj.ballColour));
+			ball.setStroke(Color.web(savedObj.ballColour));
 			score=savedObj.score;
 			System.out.println("score: "+savedObj.score);
 			pane1.setVisible(savedObj.pane1Vis);
 			pane2.setVisible(savedObj.pane2Vis);
 			pane3.setVisible(savedObj.pane3Vis);
+			
+			star1.setVisible(savedObj.pane1Star);
+			star2.setVisible(savedObj.pane2Star);
+			star3.setVisible(savedObj.pane3Star);
 		}
 		
 		savedObj=null;
