@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="form" onMouseClicked="#jump" onMouseEntered="#rotateRing" prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PlayNewGameController">
+   <children>
+      <Circle fx:id="ball" fill="#32dbf0" layoutX="299.0" layoutY="662.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Button fx:id="backButton" layoutX="38.0" layoutY="42.0" mnemonicParsing="false" onAction="#goBack" prefHeight="50.0" prefWidth="114.0" text="BACK">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant color="#ffd23c" />
+               </light>
+            </Lighting>
+         </effect>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop color="#b06b6b" />
+                  <Stop color="#f81212" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Button>
+      <Button fx:id="pauseButton" layoutX="462.0" layoutY="42.0" mnemonicParsing="false" onAction="#pause" prefHeight="50.0" prefWidth="114.0" text="PAUSE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant color="#ffd23c" />
+               </light>
+            </Lighting>
+         </effect>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop color="#b06b6b" />
+                  <Stop color="#f81212" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Button>
+      <Pane fx:id="pane" layoutX="43.0" layoutY="206.0" prefHeight="374.0" prefWidth="515.0">
+         <children>
+            <Line endX="86.0" endY="274.0" layoutX="331.0" layoutY="55.0" startX="-52.0" startY="132.0" stroke="#32dbf0" strokeWidth="30.0" />
+            <Line endX="70.78680419921875" endY="160.0" layoutX="187.0" layoutY="13.0" startX="-84.0" startY="10.0" stroke="#ff0181" strokeWidth="30.0" />
+            <Line endX="-60.0" endY="23.0" layoutX="339.0" layoutY="149.0" startX="71.0" startY="-131.0" stroke="#900dff" strokeWidth="30.0" />
+            <ImageView fitHeight="99.0" fitWidth="106.0" layoutX="208.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/star.png" />
+               </image>
+            </ImageView>
+            <Line endX="10.0" endY="328.0" layoutX="109.0" layoutY="3.0" startX="156.0" startY="180.0" stroke="#e2ff00" strokeWidth="30.0" />
+         </children>
+      </Pane>
+      <Rectangle fx:id="colorChanger" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="89.0" layoutX="251.0" layoutY="42.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+      
+   </children>
+</AnchorPane>
